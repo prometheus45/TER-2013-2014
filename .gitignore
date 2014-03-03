@@ -1,0 +1,10 @@
+*.tex.aux
+*.aux
+*.log
+*.toc
+*.gz
+*.bbl
+*.blg
+*.dvi
+*.out
+Rapport-TER.pdf
