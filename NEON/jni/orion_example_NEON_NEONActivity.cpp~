@@ -1,0 +1,27 @@
+#include <orion_example_NEON_NEONActivity.hpp>
+
+#include <NEON.hpp>
+
+JNIEXPORT void JNICALL Java_orion_example_NEON_NEONActivity_vecAdd(JNIEnv* env, jobject obj, jfloatArray jv1, jfloatArray jv2, jfloatArray jv3) {
+
+  jfloat* v1 = env->GetFloatArrayElements(jv1, 0);
+  jfloat* v2 = env->GetFloatArrayElements(jv2, 0);
+  jfloat* v3 = env->GetFloatArrayElements(jv3, 0);
+  jint size = env->GetArrayLength(jv1);
+
+  vec_add(v1, v2, v3, size);
+
+}
+
+JNIEXPORT jfloatArray JNICALL Java_orion_example_NEON_NEONActivity_alignedMalloc
+(JNIEnv* env, jobject obj, jint size, jint align) {
+
+  float* mem = aligned_malloc(size * 4, align);
+
+  jfloatArray array = env->NewFloatArray(size);
+
+  env->SetFloatArrayRegion(array, 0, size, mem);
+
+  return array;
+
+}
