@@ -1,0 +1,29 @@
+package orion.example.NEON;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+import android.widget.TextView;
+
+public class NEONActivity extends Activity
+{
+
+    static {
+	System.loadLibrary("NEON");
+    }
+
+    private native void vecAdd(float[] v1, float[] v2, float[] v3);
+    private native float[] alignedMalloc(int size, int align);
+
+
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+	TextView tv = new TextView(this);
+	float[] a1 = alignedMalloc(4, 16);
+	tv.setText("val = " + a1[0]);
+        setContentView(tv);
+    }
+}
