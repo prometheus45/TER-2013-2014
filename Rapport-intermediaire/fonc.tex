@@ -1,1 +1,35 @@
 \chapter{Besoins fonctionnels}
+
+\section{Le but}
+\paragraph{}
+	Le but de ce projet est d'établir l'utilité de la parallélisation dans un code, en vue de réduire la consommation énergétique d'une batterie d'un appareil mobile ; et par extension la consommation sur un ordinateur fixe ou portable. \\
+
+	Les batteries d'appareils mobiles sont de plus en plus mal menées par les nouvelles applications qui consomment de plus en plus de batterie, sans que ces dernières n'évoluent; il faut donc trouver d'autres solutions pour limiter la consommation excessive d'énergie.\\
+
+	En parallèle les processeurs d'appareils mobiles eux évolue pour avoir de plus grandes cadences de calculs et plusieurs processeurs.\\
+
+	Par exemple, le Galaxy S4 de Samsung propose un Quad-core A15 (à 1.6GHz) plus un Quad-core A7 (à 1.2GHz), il serait donc dommage de ne pas s'en servir pour nos applications.\\
+
+	Et comme nous le verrons par la suite, des outils sont disponibles pour mettre en oeuvre nos tests, par exemple, Android est capable d'exécuter du code natif avec de l'OpenMP des thread c++11, et des instructions : Single instruction multiple data (SIMD) NEON. \\
+
+	En ce qui concerne les ordinateurs leur consommation est aussi en constante augmentation notamment avec les BigData etc. Il est donc tout aussi nécessaire de réduire de façon considérable la consommation en électricité.
+
+\section{L'application}
+\paragraph{}
+	L'idée est de déterminer si il vaut mieux effectuer un calcul sur un processeur avec une grande cadence de calcul ou de distribuer le calcul sur plusieurs processeurs plus lent, mais qui par conséquent consomme moins d'énergie. \\
+
+	En effet un processeur, cadencé à 4GHz, consomme plus que quatre processeurs, cadencés à 1Ghz, pourtant le temps de calcul devrait être sensiblement le même. Pour vérifier cette hypothèse nous allons réaliser différents tests avec différents calculs, sur plusieurs architectures; et ainsi déterminer si nous consommerions moins d'énergie' en réduisant la fréquence du processeur dynamiquement et en répartissant les calculs sur les différents processeurs.\\
+
+	En effet nous cherchons à déterminer si en distribuant un code la consommation énergétique diminue. Sachant que la consommation énergétique augmente de façon exponentielle.\\
+
+	Pour moduler la fréquence et le voltage des appareils mobiles Android, nous nous sommes basé sur l'application AnTUTU\footnote{AnTUTU : \url{https://play.google.com/store/apps/details?id=com.antutu.CpuMasterFree&hl=fr}}, qui nous permet de régler de façon simple la fréquence des différents processeurs disponibles sur nos appareils.\\
+
+	Des alternatives à AnTUTU existent, par exemple, Voltage Control\footnote{Voltage Control : \url{https://play.google.com/store/apps/details?id=com.darekxan.voltagecontrol}} qui réalise la même chose. \\
+
+	Pour vérifier la consommation de batterie nous utilisons Battery Monitor\footnote{Battery Monitor : \url{https://play.google.com/store/apps/details?id=ccc71.bmw}}, cette application trace une courbe de la consommation batterie en direct, mais nous oblige à garde l'application ouverte en tache de fond ce qui utilisera aussi un peu de batterie et donc nos résultat seront légérement faussé mais la consommation engendrée par cette application devrait être négligeable dans nos résultats. \\
+
+	Pour vérifier la consommation de batterie nous utilisons Battery Monitor\footnote{Battery Monitor : \url{https://play.google.com/store/apps/details?id=ccc71.bmw}}, cette application trace une courbe de la consommation batterie en direct, mais nous oblige à garde l'application ouverte en tache de fond ce qui utilisera aussi un peu de batterie et donc nos résultats seront légèrement faussé, mais la consommation engendrée par cette application devrait être négligeable dans nos résultats. \\
+
+	Nous utiliserons aussi Battery Log\footnote{Battery Log : \url{https://play.google.com/store/apps/details?id=kr.hwangti.batterylog&hl=fr}} qui écrit dans un fichier les informations de la batterie à un instant T et l'intervalle entre deux temps est modulable.\\
+
+	En ce qui concerne nos tests sur ordinateur nous travaillons sous linux avec l'outil CPUFreq-selector\footnote{CPUFreq-selector : \url{http://manpages.ubuntu.com/manpages/hardy/man1/cpufreq-selector.1.html}} qui ous permet, comme AnTUTU sous Android, de moduler la fréquence des processeurs.\\

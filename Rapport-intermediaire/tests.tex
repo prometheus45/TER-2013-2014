@@ -1,1 +1,17 @@
 \chapter{Résultats de tests}
+
+\subsection{ L'experimentation de différents algorithmes parallèle sur ARM avec Android }
+
+\paragraph{Les outils / Code parallèle \\}
+
+	Pour utiliser des technologies parallèles performante sur un environnmenent acceptant, il n'existe pas beaucoup d'outils pour paralléliser du code, nous avons dû faire une recherche sur ce qui existe et utilisable sur Android, que nous avons développé dans la partie 5-Besoins fonctionnels. \\
+
+	Pour obtenir des gains de performance nous nous sommes penchés sur les librairies de parallèlisme classique et parmi celles ci nos test nous ont montrés qu'il été possible d'utiliser des technologies comme C++11, openMP et NEON pour la partie Android; et des outils comme SSE ou AVX, OpenMP, Thread ou encore Cuda, pour la partie concernant les ordinateurs. \\
+
+\paragraph{L'estimation des performances énergétiques \\}
+
+	Le but est de tester la consommation énergetique du parallélisme sur Android et sur PC avec les différentes technologies exploitables. \\
+
+	Nos tests vont constituer à exécuter des algorithmes où le parallélisme s'applique de façon optimale. Pour ce il faudrait des algorithmes où le parallélisme serait maximal, c'est-à-dire ou chaque processeurs travaillerais sur des tailles de données équivalentes.
+
+	Pour cela nous allons implémentés les algorithmes que nous avons évoqués dans la partie 4-Non Fonctionnelle:
