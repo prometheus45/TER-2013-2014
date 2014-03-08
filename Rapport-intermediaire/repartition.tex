@@ -1,3 +1,65 @@
 \begin{landscape}
 \chapter{Planning}
+
+
+\begin{figure}[h!]
+\begin{center}
+
+\begin{ganttchart}[y unit title=0.4cm,
+y unit chart=0.5cm,
+vgrid,hgrid, 
+title label anchor/.style={below=-1.6ex},
+title left shift=.05,
+title right shift=-.05,
+title height=1,
+bar/.style={fill=gray!50},
+incomplete/.style={fill=cyan},
+progress label text={},
+bar height=0.7,
+group right shift=0,
+group top shift=.6,
+group height=.3,
+group peaks={}{}{.2}]{32}
+%labels
+\gantttitle{Planning}{32} \\
+\gantttitle{Février}{8} 
+\gantttitle{Mars}{8} 
+\gantttitle{Avril}{8} 
+\gantttitle{Mai}{8} \\
+%tasks
+\ganttbar[bar/.style={fill=green, rounded corners=3pt}]{Recherche Doc}{1}{10} \\
+\ganttbar[bar/.style={fill=blue, rounded corners=3pt}]{Réunion}{9}{11} \\
+\ganttbar[bar/.style={fill=orange, rounded corners=3pt}]{Devs et Tests}{9}{24} \\
+\ganttbar[bar/.style={fill=red, rounded corners=3pt}]{Benchmark}{12}{27} \\
+\ganttbar[bar/.style={fill=yellow, rounded corners=3pt}]{Finalisation}{28}{31}
+\end{ganttchart}
+\vspace{-0.5cm}
+\end{center}
+\hspace{7.3cm} \noindent \begin{tabular}{l}
+	 \rowcolor{green} \\  
+\end{tabular}
+Recherche documentaire
+
+\hspace{7.3cm} \noindent \begin{tabular}{l}
+     \rowcolor{blue} \\  
+\end{tabular}
+Réunion du groupe pour mettre en commun tous les éléments et répartir les taches 
+
+\hspace{7.3cm} \noindent \begin{tabular}{l}
+     \rowcolor{orange} \\  
+\end{tabular}
+Phase de développement et de test
+
+\hspace{7.3cm} \noindent \begin{tabular}{l}
+    \rowcolor{red} \\  
+\end{tabular}
+Phase de benchmark
+
+\hspace{7.3cm} \noindent \begin{tabular}{l}
+     \rowcolor{yellow} \\  
+\end{tabular}
+Finalisation du TER \\
+\caption{Planning de réalisation du projet}
+\end{figure}
+
 \end{landscape}
