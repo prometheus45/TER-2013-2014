@@ -1,5 +1,10 @@
 \chapter{Résumé du projet}
 
-Notre projet est proposé par M. JUBERTY et nous entraine dans l'étude des performances de la parallélisation sur plusieurs systèmes et processeurs différents. Aujourd'hui, les machines actuelles, du smartphones aux supercalculateurs, possèdent des processeurs multi-cœurs. Pour de meilleurs performances, il faut paralléliser les codes. 
-\\	Mais cette pratique n'est pas répandu sur les architectures nomades dont le nombre de cœur sert généralement à exécuter plusieurs tâches distincts et à diminuer la consommation énergétique en modifiant les fréquences et en désactivant les processeurs inutilisés. Notre but à l'issue du projet est d'établir de qu'elle manière exploiter le potentiel des processeurs nomades avec des méthodes de parallélisation tout en conservant une faible consommation énergétique. Faut-il plutôt utiliser un seul cœur avec une fréquence élevée ou plutôt utiliser plusieurs cœurs avec des fréquences plus faibles ?
+Notre projet est proposé par M. JUBERTIE et nous entraîne dans l'étude de l'impact de la parallélisation d'algorithmes sur la consommation énergétique des architectures parallèles et les contextes d'utilisations.\\ 
+Aujourd'hui, les machines actuelles, du smartphone aux supercalculateurs, possèdent tous des processeurs intégrant des unités parallèles . Dans le but d'exploiter le potentiel de ces processeurs en alliant performances et consommations, il faut adapter les méthodes de programmation selon les différentes architectures utilisées. Cependant la parallélisation n'est pas très répandue les architectures nomades dont le nombre de cœur sert généralement à exécuter plusieurs tâches distinctes et à diminuer la consommation énergétique en modifiant les fréquences et en désactivant les processeurs inutilisés.
+\\ 
+Comment exploiter ce type d'architecture afin de réaliser des calculs peu intensifs ? Faut-il privilégier un cœur avec une fréquence maximale ou bien plusieurs cœurs avec une fréquence moindre.
+\\Dans un premier temps, nous réaliserons des mesures de performances et de consommations sur des processeurs nomades en utilisant des codes séquentiels ou parallèles (OpenMP, Threads ou d'autre méthode).
+Ensuite nous comparerons les résultats obtenus avec des architectures "traditionnelles" sur des ordinateurs.
+Pour finir, avec ces tests réalisés, déterminer des modèles de coûts permettant de prévoir le comportement énergétique d'un code parallèle.
        
