@@ -1,25 +1,25 @@
-\chapter{introduction}
+\chapter{Introduction}
 
 	\section{Le domaine}
 		Du smartphone aux supercalculateurs, nos outils technologiques ne cessent d'évoluer. Nous arrivons à stade où les appareils mobiles, ainsi que les machines de calculs, possèdent des processeurs multi-c\oe{}urs, leur but premier est de réduire le temps de calculs des différents algorithmes que l'on souhaite exécuter. En parallèle la consommation électrique de ces technologies augmente considérablement. \\
  		Ce qui met en avant certaines problématiques auxquelles nous tenterons d'apporter un élément de réponse. 
 
-	\section{problèmatique}
-		Est-il vraiment utile de paralléliser du code pour gagner du temps de calcul et ainsi réduire la consommation énergétique ? Ou le rapport temps/énergie consommée est-il soit négligeable, soit entraine, au contraire, une surconsommation énergétique ? \\
+	\section{La problèmatique}
+		Est-il vraiment utile de paralléliser du code pour gagner du temps de calcul et ainsi réduire la consommation énergétique ? Autrement dit, le rapport temps/énergie consommée est-il négligeable, entraine-t-il, au contraire, une surconsommation énergétique ? \\
 
 		Pour répondre à ces questions nous devrons d'abord nous demander comment exploiter les différents types d'architectures, afin de réaliser des calculs performants et peu intensifs.\\
 
 		Dans un premier temps, nous réaliserons des mesures de performances et de consommations sur des processeurs nomades en utilisant des codes séquentiels et parallèles (notamment grâce aux bibliothèques OpenMP et Threads). Nous pourrons ainsi donner une première approche du problème ; à savoir s'il est préférable d'utiliser pleinement un c\oe{}ur avec sa fréquence maximal ou s'il faut privilégier un code réparti sur plusieurs c\oe{}urs avec des fréquences réduites. Et ainsi établir un ratio performance / gain énergétique.\\
 
-		Ensuite, nous ferons une analogie les résultats obtenus avec des tests effectués sur des architectures plus "traditionnelles" tels que des ordinateurs.\\
+		Ensuite, nous ferons une analogie des résultats obtenus avec les tests effectués sur des architectures plus "traditionnelles" tels que des ordinateurs.\\
 
 		Pour finir, nous mettrons en relief les différentes corrélations que nous avons pu voir durant ce projet ; nous tenterons ainsi d'établir un modèle sur les coûts de la parallélisation et l'impact sur la consommation énergétique qui en découle.
 \newpage
-	\section{les objectifs}
+	\section{Les objectifs}
 	Pour répondre à cette problématique  nous devrons nous concentrer sur deux points : \\
 	\begin{itemize}
 	\item{ Premièrement, le développement de code de calculs simples et d'en produire des versions optimisées séquentielles et parallèles (grâce notamment aux bibliothèques OpenMP ou threads).\\}
 	\item{ Deuxièmement, effectuer des tests sur des tablettes/smartphones et également sur des PC traditionnels afin d'en déduire une correlation entre la parallélisation d'un code et les effets qui en découlent ; tels que le temps de calcul gagné et la consommation énergétique engendrée.\\}
 
-	Pour ça nous avons commencé par chercher tout ce qui avait déjà été fait et étudié dans ce domaine.
+	C'est pourquoi un état de l'art de ce domaine a été essentiel.
 
