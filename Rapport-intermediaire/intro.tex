@@ -46,7 +46,7 @@ Quand on évoque les processeurs ARM, on parle aussi d'un System on Chip ou SoC 
 
 \subsection{ Les architectures x86 et x86-64 }
 
-L'architecture x86(32 bits) ou x86-64(64 bits) sont les architectures les plus utilisées sur les ordinateurs aujourd'hui. Elles utilises les jeux d'instructions du type CISC (Complex instruction set computer). Ce type d'architecture comporte aussi des processeurs multicœurs mais aussi des processeurs utilisant l'hyper-threading que nous détaillerons dans les parties suivantes.
+L'architecture x86(32 bits) ou x86-64(64 bits) sont les architectures les plus utilisées sur les ordinateurs aujourd'hui. Elles utilises les jeux d'instructions du type CISC (Complex instruction set computer). Ce type d'architecture comporte aussi des processeurs multi-cœurs mais aussi des processeurs utilisant l'hyper-threading que nous détaillerons dans les parties suivantes.
 
 \subsubsection{ Complex instruction set computer }
 
@@ -68,9 +68,11 @@ nous rencontrerons l'hyper-threading. Développé par Intel, cela consiste sché
 
 Dans cette section, nous allons lister plusieurs méthodes ou technologies de parallélisations ou de gain de performances pour les tests séquentiels que nous allons employer. Il existe certaines méthodes appartenant à un type d'architecture évoquer précédemment comme le SSE (Streaming SIMD Extensions) pour les processeurs x86-64 ou NEON (Advanced SIMD) les processeurs ARM.
 
+\clearpage
+
 \subsection{ L'utilisation des threads }
 
-L'utilisation des threads consiste 
+Un thread ou fil d'exécution est similaire à un processus dû à la même représentation de l'exécution d'un ensemble d'instructions du langage machine d'un processeur. Il permet, sur des machines à multi-cœurs, de paralléliser le traitement de calcul intensif car les threads ont la possibilité d'être exécutés chacun sur un cœur différent donc d'être réalisé au même moment. On retrouve l'utilisation des threads dans de nombreux langages de programmation comme le JAVA ou le C++ via la bibliothèque "pthread". Sur Android, elle est la principale méthode employée pour la parallélisation en programmation JAVA ou en natif. 
 
 \subsection{ OpenMP (Open Multi-Processing) }
 
@@ -83,15 +85,17 @@ MPI est une norme définissant une bibliothèque de fonctions conçue en 1993. E
 
 \subsection{ SSE (Streaming SIMD Extensions) }
 
-SEE (Streaming (Single Instruction on Multiple Data) Extensions) est un jeu de 70 instructions supplémentaires pour microprocesseurs x86. Elle introduit au processeur des instructions scalaires et de virgule flottante compactée. Cette technologie n'est pas compatible avec l'architecture ARM mais celle-ci possède une technologie proche nommée NEON (). 
+SSE (Streaming (Single Instruction on Multiple Data) Extensions) est un jeu d'instructions supplémentaires pour microprocesseurs x86 et aujourd'hui les microprocesseurs x86-64. Elle introduit au processeur des instructions scalaires et de virgule flottante compactée. L'utilisation de ces instructions réduites le nombre d'instructions nécessaires à la réalisation d'un calcul utilisant des nombres flottants. Aujourd'hui cette technologie a reçu diverses mises à jour augmentant ces performances. Cette technologie n'est pas compatible avec l'architecture ARM mais celle-ci possède un équivalent assez proche nommé NEON (Advanced SIMD). 
 
 \subsection{ NEON (Advanced SIMD) }
 
 
 
+
+
 \subsection{ CUDA (Compute Unified Device Architecture) }
 
-       
+CUDA est une plate-forme de calcul parallèle et un modèle de programmation créé par NVIDIA. Cette technologie se différencie par l'utilisation des capacités de calcul d'un GPU (Graphics Processing Unit) afin d'accroitre les performances des ordinateurs et ainsi réaliser de calculs intensifs.    
 
  
 
