@@ -1,14 +1,14 @@
 \chapter{Besoins non fonctionnels}
 
 \paragraph{}
-	En premier lieu, notre domaine d'action se porte sur tout appareil mobile sous Android; par extension notre hypothèse sera testée sur des ordinateurs.
+	Notre domaine d'action se porte sur les appareils mobiles sous Android. Par extension notre hypothèse sera testée sur des ordinateurs.
 \paragraph{}
-	Nous n'avons aucune fiabilité sur la réussite de notre projet, en effet étant un domaine de recherche, le but est d'analyser l'hypothèse et le comportement, énoncé précédemment.
+	Nous n'avons aucune fiabilité sur la réussite de notre projet. Ce dernier étant un domaine de recherche, le but est d'affirmer ou de réfuter l'hypothèse énoncée précédemment.
 
 \subsection*{Les algorithmes implémentés :\\}
 
 \begin{itemize}
-	\item{\textbf{Bassin versant\footnote{Cf: défénition trouvée sur Wikipédia, \url{http://fr.wikipedia.org/wiki/Bassin_versant}} :} Un bassin versant1 ou bassin-versant est une aire délimitée par des lignes de partage des eaux, à l'intérieur des quelles toutes les eaux tombées alimentent un même exutoire : cours d'eau, lac, mer, océan, etc. Une ligne de partage des eaux ce confond très souvent avec une ligne de crête.\\
+	\item{\textbf{Bassin versant\footnote{Cf: défénition trouvée sur Wikipédia, \url{http://fr.wikipedia.org/wiki/Bassin_versant}} :} Un bassin versant ou bassin-versant est une aire délimitée par des lignes de partage des eaux, à l'intérieur des quelles toutes les eaux tombées alimentent un même exutoire : cours d'eau, lac, mer, océan, etc. Une ligne de partage des eaux ce confond très souvent avec une ligne de crête.\\
 
 	Chaque bassin versant se subdivise en un certain nombre de bassins élémentaires (parfois appelés « sous-bassin versant ») correspondant à la surface d'alimentation des affluents se jetant dans le cours d'eau principal.\\}
 
@@ -26,11 +26,13 @@
 	\item{ \textbf{Histogramme :} l’histogramme représente la distribution des intensités d'une matrice.}
 	\end{itemize}
 
-	\subsection*{langage d'implémentation :}
+	\subsection*{Langage d'implémentation :}
 		Pour effectuer nos tests nous avons opté pour écrire un code natif, c'est-à-dire du C/C++ pour que le code soit portable autant sur appareils mobile que sur nos ordinateurs, en changeant un minimum l'implémentation. 
 
-	\subsection*{tests de validation :}
+	\subsection*{Tests de validation :}
 		Nous ne pouvons pas réellement prévoir de tests de validation, étant donné que nous ne savons pas encore quel genre de résultat nous allons obtenir; nous ne pourrons seulement valider nos tests que s'ils convergent vers le même résultat. 
 
-	\subsection*{description des problèmes associés :}
-		Le parallélisme induit des modifications d'algorithme pour que le calcul soit efficace, ce qui nous oblige à penser les algorithmes différemment de ce dont nous avons l'habitude.
+	\subsection*{Description des problèmes associés :}
+		Tout algorithme n'est pas parallélisable. En effet, induire du parallélisme peut ralentir le temps d'exécution d'un algorithme. En d'autres termes, un même algorithme peu être plus efficace en séquentielle qu'en parallèle.\\
+
+		Produire du code parallèle pousse le développeur à avoir une vision différente des algorithmes. Le but du développeur ici est d'avoir le meilleur gain possible. Autrement dis le temps d'exécution d'un programme parallèle doit avoir un réel facteur de division du temps en fonction du nombre de coeurs choisie.
