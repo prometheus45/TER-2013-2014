@@ -64,12 +64,34 @@ Ce type de microprocesseurs est plus difficile à accélérer. Leur structure es
 Pour la réalisation de nos tests sur des machines d'architecture x86-64, 
 nous rencontrerons l'hyper-threading. Développé par Intel, cela consiste schématiquement à doter un processeur de deux processeurs logiques sur une seule puce ayant, pour chacun, ses propres registres de données et de contrôle ainsi qu'un contrôleur d'interruption particulier. Ces deux unités partagent les éléments du cœur processeur, le bus système et le cache. Grâce à cette technologie, le processeur peut traiter deux sous processus simultanément. Au niveau des performances, cela ne remplace pas ceux d'un vrai cœur mais la présence de l'hyper-threading peut avoir une influence sur les futurs tests et donc sur les comparaisons. 
 
-\section{ Les méthodes de parallélisations }
+\section{ Les techniques de performances }
 
-Dans cette section, nous allons lister plusieurs méthodes ou technologies de parallélisations que nous allons employer lors de nos tests. Il existe certaines méthodes appartenant à un type d'architecture évoquer précédemment comme le SSE (Streaming SIMD Extensions) pour les processeurs x86-64 ou NEON (Advanced SIMD) les processeurs ARM.
+Dans cette section, nous allons lister plusieurs méthodes ou technologies de parallélisations ou de gain de performances pour les tests séquentiels que nous allons employer. Il existe certaines méthodes appartenant à un type d'architecture évoquer précédemment comme le SSE (Streaming SIMD Extensions) pour les processeurs x86-64 ou NEON (Advanced SIMD) les processeurs ARM.
 
-\subsection{ Thread }
+\subsection{ L'utilisation des threads }
 
+L'utilisation des threads consiste 
+
+\subsection{ OpenMP (Open Multi-Processing) }
+
+OpenMP est une interface de programmation conçue pour le calcul parallèle sur des architectures à mémoire partagée. Il se présente sous la forme d'un ensemble de directives, d'une bibliothèque logicielle et de variable d'environnement. Cette interface de programmation (API) présente plusieurs avantages. Il permet le développement d'applications parallèle rapidement tout en conservant un code proche du code séquentiel.
+Un autre avantage est sa présence sur la plupart des systèmes d'exploitation comme Windows ou Unix. Depuis peu, il est possible de l'utiliser pour réaliser des programmes pour Android en natif.
+
+\subsection{ MPI (Message Passing Interface) } 
+
+MPI est une norme définissant une bibliothèque de fonctions conçue en 1993. Elle est utilisé dans les langages C, C++ et Fortran. Cette bibliothèque offre de bonnes performances aussi bien sur les machines à mémoires partagées que sur des machines à mémoire distribué (cluster). Par contre, elle nécessite plus de code qu'OpenMP de par la présence de paramètres pour le communicateur et pour l'exécution d'un type de communication (envoyer ou recevoir un message). Elle est disponible sur Windows et sur les systèmes UNIX mais elle n'est pas présente sur le système Android.
+
+\subsection{ SSE (Streaming SIMD Extensions) }
+
+SEE (Streaming (Single Instruction on Multiple Data) Extensions) est un jeu de 70 instructions supplémentaires pour microprocesseurs x86. Elle introduit au processeur des instructions scalaires et de virgule flottante compactée. Cette technologie n'est pas compatible avec l'architecture ARM mais celle-ci possède une technologie proche nommée NEON (). 
+
+\subsection{ NEON (Advanced SIMD) }
+
+
+
+\subsection{ CUDA (Compute Unified Device Architecture) }
+
+       
 
  
 
