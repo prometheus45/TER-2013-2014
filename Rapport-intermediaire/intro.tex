@@ -1,108 +1,25 @@
-\chapter{Introduction au domaine}
+\chapter{introduction}
 
-Dans un premier temps, il est important d'évoquer ce qui caractérise les architectures que nous emploierions lors de nos tests ainsi que les méthodes de parallélisation et leurs différences de fonctionnement.
+	\section{Le domaine}
+		Du smartphone aux supercalculateurs, nos outils technologiques ne cessent d'évoluer. Nous arrivons à stade où les appareils mobiles, ainsi que les machines de calculs, possèdent des processeurs multi-c\oe{}urs, leur but premier est de réduire le temps de calculs des différents algorithmes que l'on souhaite exécuter. En parallèle la consommation électrique de ces technologies augmente considérablement. \\
+ 		Ce qui met en avant certaines problématiques auxquelles nous tenterons d'apporter un élément de réponse. 
 
-\section{ Les différentes architectures }
+	\section{problèmatique}
+		Est-il vraiment utile de paralléliser du code pour gagner du temps de calcul et ainsi réduire la consommation énergétique ? Ou le rapport temps/énergie consommée est-il soit négligeable, soit entraine, au contraire, une surconsommation énergétique ? \\
 
-Aujourd'hui il existe de nombreuses architectures de processeurs différentes au sein de nos machines aussi bien dans les ordinateurs que dans les appareils nomades. Nous allons explorer deux grandes familles :
-les architectures ARM (Advanced RISC Machines) utilisées dans les appareils nomades et les architectures x86 (et x86-64) utilisées dans la plupart des ordinateurs.
+		Pour répondre à ces questions nous devrons d'abord nous demander comment exploiter les différents types d'architectures, afin de réaliser des calculs performants et peu intensifs.\\
 
-\subsection{ Les architectures Advanced RISC Machines (ARM)}
+		Dans un premier temps, nous réaliserons des mesures de performances et de consommations sur des processeurs nomades en utilisant des codes séquentiels et parallèles (notamment grâce aux bibliothèques OpenMP et Threads). Nous pourrons ainsi donner une première approche du problème ; à savoir s'il est préférable d'utiliser pleinement un c\oe{}ur avec sa fréquence maximal ou s'il faut privilégier un code réparti sur plusieurs c\oe{}urs avec des fréquences réduites. Et ainsi établir un ratio performance / gain énergétique.\\
 
-Les architectures ARM sont introduites en 1983 mais elle ne s'insère que depuis quelques années sur le marché des appareils nomades. elles sont basés sur des architectures RISC (Reduced Instruction Set Computer) 32 bits (ARMv3 à ARMv7) et récemment 64 bits avec l'ARMv8. Aujourd'hui, le développement autour de cette architecture a atteint son apogée. On assiste à une augmentation des fréquences constante ainsi qu'au nombre de cœurs qu'un processeur possède.
+		Ensuite, nous ferons une analogie les résultats obtenus avec des tests effectués sur des architectures plus "traditionnelles" tels que des ordinateurs.\\
 
-\subsubsection{ Reduced Instruction Set Computer }
+		Pour finir, nous mettrons en relief les différentes corrélations que nous avons pu voir durant ce projet ; nous tenterons ainsi d'établir un modèle sur les coûts de la parallélisation et l'impact sur la consommation énergétique qui en découle.
+\newpage
+	\section{les objectifs}
+	Pour répondre à cette problématique  nous devrons nous concentrer sur deux points : \\
+	\begin{itemize}
+	\item{ Premièrement, le développement de code de calculs simples et d'en produire des versions optimisées séquentielles et parallèles (grâce notamment aux bibliothèques OpenMP ou threads).\\}
+	\item{ Deuxièmement, effectuer des tests sur des tablettes/smartphones et également sur des PC traditionnels afin d'en déduire une correlation entre la parallélisation d'un code et les effets qui en découlent ; tels que le temps de calcul gagné et la consommation énergétique engendrée.\\}
 
-Comme introduit précédemment, l'architecture employée pour l'ARM est RISC. il s'agit d'un type d'architecture matérielle de microprocesseur. Elle est caractérisée par un jeu d'instructions réduit, facile à décoder et comportant uniquement des instructions simples. Elle s'oppose à l'architecture CISC (Complex Instruction Set Computer) employé sur les architectures x86 et x86-64 que nous décrirons plus tard.
-\\
-Ce type d'architecture est caractérisée par le fait de reposer l'optimisation du code sur le compilateur tandis que les instructions sont faciles à décoder pour le processeur. Pour cela :
-\begin{itemize}
-\item Ces processeurs possèdent un nombre important de registres "généraux" (un minimum de 16 et généralement de 32). Ils sont tous équivalents afin de faciliter leur allocation par le compilateur
-\item Les instructions possèdent une taille fixe, souvent de 32 bits
-\item Les instructions utilisées pour des calculs arithmétiques possèdent généralement 3 adresses avec 2 registres comme opérandes et un registre de sortie
-\item Pour les accès à la mémoire, des instructions spécifiques sont employées et une valeur doit, au préalable, être chargée dans un registre pour être utilisée. Ce genre d'architecture est nommé load-store ou instruction register-register
-\end{itemize}
-Afin d'en améliorer les performances, des ajouts ont été effectuées. Par exemple des instructions plus petites ou des méthodes de compression de code ont été ajoutés ou encore les fenêtres de registres qui permettent une accélération des appels de fonctions sur certaines architectures.
-Les architectures actuelles ont aussi la possibilité d'utiliser des instructions vectorielles et une unité de calcul en virgule flottante. 
-\\
-Ce type d'architecture possèdent plusieurs avantages dont l'un d'eux consiste principaux à la présence d'instructions simples. En effet, grâce à ce type d'instruction, l'exécution du processeur est rapide, idéalement en un seul cycle, voire deux instructions en un cycle. Par exemple, certains processeurs RISC présents sur des calculateurs plus puissants se sont vu ajouter des instructions du type MULADD (multiplication + addition). Ce type d'instruction est très utilisé pour des calculs vectoriels et matriciels. Cela avait pour effet, par exemple, de prendre un seul cycle pour multiplier deux registres, y ajouter un autre registre et sauvegarder le résultat dans l'un de ces registres ou dans un autre.\\
-Un autre avantage consiste à la faible perdition thermique de ce type de processeur contrairement au architecture CISC. En effet, on constate une utilisation des processeurs ARM sur des appareils mobiles sans un système de refroidissement lourd (ventilateur) contrairement aux ordinateurs équipé d'un processeur CISC.
-\\
-Mais ce type d'architecture n'est pas sans inconvénient dont l'un correspond à la faible lisibilité du code d'un programme en assembleur surtout lorsqu'une optimisation de celui-ci est nécessaire.
-un autre inconvénient est le fait que son code est généralement moins compact car toutes les instructions sont de même taille au contraire des instructions CISC qui sont généralement plus courtes.  
-
-\subsubsection{ SoC (System on Chip) }
-
-Quand on évoque les processeurs ARM, on parle aussi d'un System on Chip ou SoC car ceux-ci sont rarement employés seuls. Il s'agit d'une puce intégrant un microprocesseur, un processeur graphique, d'autres fonctionnalité et contrôleur de périphériques. Ce type de système se retrouve majoritairement sur les tablettes et les smartphones. L'ARM propose des architectures différentes selon le SoC employé. Chacun des constructeurs exploitant l'ARM peut ainsi ajouter des options propres ou de concepteurs tiers à leur architecture. Ainsi on a vu apparaitre, pour les socles d'aujourd'hui, les microprocesseurs Cortex, l'Apple A6 par exemple composé de technologie du cortex-A9 et cortex-A15 ou encore le TEGRA produit par Nvidia ayant une orientation plus vers la capacité graphique.
-
-\begin{figure}[h!]
-\begin{center}
-	\includegraphics[scale=0.9]{ARMSoCBlockDiagram.png}
-	\caption{Exemple de SoC}
-\end{center}
-\end{figure}
-
-\clearpage
-
-\subsection{ Les architectures x86 et x86-64 }
-
-L'architecture x86(32 bits) ou x86-64(64 bits) sont les architectures les plus utilisées sur les ordinateurs aujourd'hui. Elles utilises les jeux d'instructions du type CISC (Complex instruction set computer). Ce type d'architecture comporte aussi des processeurs multi-cœurs mais aussi des processeurs utilisant l'hyper-threading que nous détaillerons dans les parties suivantes.
-
-\subsubsection{ Complex instruction set computer }
-
-Comme évoquer précédemment, cette architecture de processeur utilise des jeux d'instruction du type CISC utilisant de très nombreuses instructions mixées à des modes d'adressages complexes. \\
-Ce type de jeu d'instructions possède plusieurs avantages :
-\begin{itemize}
-	\item L'empreinte mémoire du code est beaucoup plus dense. Par exemple on observe un facteur deux entre de l'ARM thumb et le x86). Cela pour effet de permettre l'utilisation minimale de la taille du cache instruction.
-	\item Elle permet aussi de la microprogrammation, donc de corriger le jeu d'instructions. Cela facilite la correction de bug.
-	\item Avec l'architecture CISC, on peut utiliser des instructions plus complexes non ou mal gérer par les compilateurs mais très rapide.
-\end{itemize}
-Ce type de microprocesseurs est plus difficile à accélérer. Leur structure est généralement plus complexe que sur une architecture RISC.
-
-\subsubsection{ Hyper-threading }
-
-Pour la réalisation de nos tests sur des machines d'architecture x86-64, 
-nous rencontrerons l'hyper-threading. Développé par Intel, cela consiste schématiquement à doter un processeur de deux processeurs logiques sur une seule puce ayant, pour chacun, ses propres registres de données et de contrôle ainsi qu'un contrôleur d'interruption particulier. Ces deux unités partagent les éléments du cœur processeur, le bus système et le cache. Grâce à cette technologie, le processeur peut traiter deux sous processus simultanément. Au niveau des performances, cela ne remplace pas ceux d'un vrai cœur mais la présence de l'hyper-threading peut avoir une influence sur les futurs tests et donc sur les comparaisons. 
-
-\section{ Les techniques de performances }
-
-Dans cette section, nous allons lister plusieurs méthodes ou technologies de parallélisations ou de gain de performances pour les tests séquentiels que nous allons employer. Il existe certaines méthodes appartenant à un type d'architecture évoquer précédemment comme le SSE (Streaming SIMD Extensions) pour les processeurs x86-64 ou NEON (Advanced SIMD) les processeurs ARM.
-
-\clearpage
-
-\subsection{ L'utilisation des threads }
-
-Un thread ou fil d'exécution est similaire à un processus dû à la même représentation de l'exécution d'un ensemble d'instructions du langage machine d'un processeur. Il permet, sur des machines à multi-cœurs, de paralléliser le traitement de calcul intensif car les threads ont la possibilité d'être exécutés chacun sur un cœur différent donc d'être réalisé au même moment. On retrouve l'utilisation des threads dans de nombreux langages de programmation comme le JAVA ou le C++ via la bibliothèque "pthread". Sur Android, elle est la principale méthode employée pour la parallélisation en programmation JAVA ou en natif. 
-
-\subsection{ OpenMP (Open Multi-Processing) }
-
-OpenMP est une interface de programmation conçue pour le calcul parallèle sur des architectures à mémoire partagée. Il se présente sous la forme d'un ensemble de directives, d'une bibliothèque logicielle et de variable d'environnement. Cette interface de programmation (API) présente plusieurs avantages. Il permet le développement d'applications parallèle rapidement tout en conservant un code proche du code séquentiel.
-Un autre avantage est sa présence sur la plupart des systèmes d'exploitation comme Windows ou Unix. Depuis peu, il est possible de l'utiliser pour réaliser des programmes pour Android en natif.
-
-\subsection{ MPI (Message Passing Interface) } 
-
-MPI est une norme définissant une bibliothèque de fonctions conçue en 1993. Elle est utilisé dans les langages C, C++ et Fortran. Cette bibliothèque offre de bonnes performances aussi bien sur les machines à mémoires partagées que sur des machines à mémoire distribué (cluster). Par contre, elle nécessite plus de code qu'OpenMP de par la présence de paramètres pour le communicateur et pour l'exécution d'un type de communication (envoyer ou recevoir un message). Elle est disponible sur Windows et sur les systèmes UNIX mais elle n'est pas présente sur le système Android.
-
-\subsection{ SSE (Streaming SIMD Extensions) }
-
-SSE (Streaming (Single Instruction on Multiple Data) Extensions) est un jeu d'instructions supplémentaires pour microprocesseurs x86 et aujourd'hui les microprocesseurs x86-64. Elle introduit au processeur des instructions scalaires et de virgule flottante compactée. L'utilisation de ces instructions réduites le nombre d'instructions nécessaires à la réalisation d'un calcul utilisant des nombres flottants. Aujourd'hui cette technologie a reçu diverses mises à jour augmentant ces performances. Cette technologie n'est pas compatible avec l'architecture ARM mais celle-ci possède un équivalent assez proche nommé NEON (Advanced SIMD). 
-
-\subsection{ NEON (Advanced SIMD) }
-
-
-
-
-
-\subsection{ CUDA (Compute Unified Device Architecture) }
-
-CUDA est une plate-forme de calcul parallèle et un modèle de programmation créé par NVIDIA. Cette technologie se différencie par l'utilisation des capacités de calcul d'un GPU (Graphics Processing Unit) afin d'accroitre les performances des ordinateurs et ainsi réaliser de calculs intensifs.    
-
- 
-
-
-
-
- 
-
-
+	Pour ça nous avons commencé par chercher tout ce qui avait déjà été fait et étudié dans ce domaine.
 

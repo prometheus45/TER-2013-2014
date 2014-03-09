@@ -12,13 +12,13 @@
 
 	Et comme nous le verrons par la suite, des outils sont disponibles pour mettre en oeuvre nos tests, par exemple, Android est capable d'exécuter du code natif avec de l'OpenMP des thread c++11, et des instructions : Single instruction multiple data (SIMD) NEON. \\
 
-	En ce qui concerne les ordinateurs leur consommation est aussi en constante augmentation notamment avec les BigData etc. Il est donc tout aussi nécessaire de réduire de façon considérable la consommation en électricité.
+	En ce qui concerne les ordinateurs leurs consommations est aussi en constante augmentation notamment avec les BigData etc. Il est donc tout aussi nécessaire de réduire de façon considérable la consommation en électricité.
 
 \section{L'application}
 \paragraph{}
 	L'idée est de déterminer si il vaut mieux effectuer un calcul sur un processeur avec une grande cadence de calcul ou de distribuer le calcul sur plusieurs processeurs plus lent, mais qui par conséquent consomme moins d'énergie. \\
 
-	En effet un processeur, cadencé à 4GHz, consomme plus que quatre processeurs, cadencés à 1Ghz, pourtant le temps de calcul devrait être sensiblement le même. Pour vérifier cette hypothèse nous allons réaliser différents tests avec différents calculs, sur plusieurs architectures; et ainsi déterminer si nous consommerions moins d'énergie' en réduisant la fréquence du processeur dynamiquement et en répartissant les calculs sur les différents processeurs.\\
+	En effet un processeur, cadencé à 4GHz, consomme plus que quatre processeurs, cadencés à 1Ghz, pourtant le temps de calcul devrait être sensiblement le même. Pour vérifier cette hypothèse nous allons réaliser différents tests avec différents calculs, sur plusieurs architectures; et ainsi déterminer si nous consommerions moins d'énergie en réduisant la fréquence du processeur dynamiquement et en répartissant les calculs sur les différents processeurs.\\
 
 	En effet nous cherchons à déterminer si en distribuant un code la consommation énergétique diminue. Sachant que la consommation énergétique augmente de façon exponentielle.\\
 
@@ -33,3 +33,5 @@
 	Nous utiliserons aussi Battery Log\footnote{Battery Log : \url{https://play.google.com/store/apps/details?id=kr.hwangti.batterylog&hl=fr}} qui écrit dans un fichier les informations de la batterie à un instant T et l'intervalle entre deux temps est modulable.\\
 
 	En ce qui concerne nos tests sur ordinateur nous travaillons sous linux avec l'outil CPUFreq-selector\footnote{CPUFreq-selector : \url{http://manpages.ubuntu.com/manpages/hardy/man1/cpufreq-selector.1.html}} qui ous permet, comme AnTUTU sous Android, de moduler la fréquence des processeurs.\\
+
+	Ces outils nous permettrons d'évaluer les différents résultats obtenus durant nos tests.
