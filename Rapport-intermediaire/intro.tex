@@ -5,11 +5,11 @@
  		Ce qui met en avant certaines problématiques auxquelles nous tenterons d'apporter un élément de réponse. 
 
 	\section{La problèmatique}
-		Est-il vraiment utile de paralléliser du code pour gagner du temps de calcul et ainsi réduire la consommation énergétique ? Autrement dit, le rapport temps/énergie consommée est-il négligeable, entraine-t-il, au contraire, une surconsommation énergétique ? \\
+		Est-il vraiment utile de paralléliser du code pour gagner du temps de calcul et ainsi réduire la consommation énergétique ? Autrement dit, le rapport temps / énergie consommée est-il négligeable, entraîne-t-il, au contraire, une surconsommation énergétique ? \\
 
 		Pour répondre à ces questions nous devrons d'abord nous demander comment exploiter les différents types d'architectures, afin de réaliser des calculs performants et peu intensifs.\\
 
-		Dans un premier temps, nous réaliserons des mesures de performances et de consommations sur des processeurs nomades en utilisant des codes séquentiels et parallèles (notamment grâce aux bibliothèques OpenMP et Threads). Nous pourrons ainsi donner une première approche du problème ; à savoir s'il est préférable d'utiliser pleinement un c\oe{}ur avec sa fréquence maximal ou s'il faut privilégier un code réparti sur plusieurs c\oe{}urs avec des fréquences réduites. Et ainsi établir un ratio performance / gain énergétique.\\
+		Dans un premier temps, nous réaliserons des mesures de performances et de consommations sur des processeurs nomades en utilisant des codes séquentiels et parallèles (notamment grâce aux bibliothèques OpenMP\footnote{OpenMP : Open Multi-Processing est un ensemble de modules permettant la réalisation d'applications utilisant le multi-threading sur C/C++ ou Fortran.} et Threads\footnote{Un thread est similaire à un processus car tous deux représentent l'exécution d'un ensemble d'instructions du langage machine d'un processeur.}). Nous pourrons ainsi donner une première approche du problème ; à savoir s'il est préférable d'utiliser pleinement un c\oe{}ur avec sa fréquence maximal ou s'il faut privilégier un code réparti sur plusieurs c\oe{}urs avec des fréquences réduites. Et ainsi établir un ratio performance / gain énergétique.\\
 
 		Ensuite, nous ferons une analogie des résultats obtenus avec les tests effectués sur des architectures plus "traditionnelles" tels que des ordinateurs.\\
 
