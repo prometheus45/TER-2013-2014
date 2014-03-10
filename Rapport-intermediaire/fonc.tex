@@ -8,7 +8,7 @@
 
 	En parallèle les processeurs d'appareils mobiles évoluent pour avoir de plus grandes cadences de calculs et être de plus en plus nombreux dans nos derniers appareilles multimédia.\\
 
-	Par exemple, le Galaxy S4\footnote{Smartphone créé par la société Samsung en avril 2013} de Samsung propose un Quad-core A15 (à 1.6GHz) plus un Quad-core A7 (à 1.2GHz). Il serait donc dommage de ne pas exploiter cette puissance de calcule pour nos applications, tout en gardant un oeil sur la consomation énèrgetique. Les mêmes conceptes et même problématiques s'appliquent aux ordinateurs .\\
+	Par exemple, le Galaxy S4 de Samsung propose un Quad-core A15 (à 1.6GHz) plus un Quad-core A7 (à 1.2GHz). Il serait donc dommage de ne pas exploiter cette puissance de calcule pour nos applications, tout en gardant un oeil sur la consomation énèrgetique. Les mêmes conceptes et même problématiques s'appliquent aux ordinateurs .\\
 
 \section{L'application}
 \paragraph{}
@@ -20,14 +20,14 @@
 
 	En effet nous cherchons à déterminer si en distribuant un code la consommation énergétique diminue (sachant que la consommation énergétique augmente de façon exponentielle).\\
 
-	Pour moduler la fréquence et le voltage des appareils mobiles Android, nous nous sommes basé sur l'application AnTUTU\footnote{AnTUTU : \url{https://play.google.com/store/apps/details?id=com.antutu.CpuMasterFree&hl=fr}}, qui nous permet de régler de façon simple la fréquence des différents processeurs disponibles sur nos appareils.\\
+	Pour moduler la fréquence et le voltage des appareils mobiles Android, nous nous sommes basé sur l'application AnTUTU, qui nous permet de régler de façon simple la fréquence des différents processeurs disponibles sur nos appareils.\\
 
-	Des alternatives à AnTUTU existent, par exemple, Voltage Control\footnote{Voltage Control : \url{https://play.google.com/store/apps/details?id=com.darekxan.voltagecontrol}} qui réalise la même chose. \\
+	Des alternatives à AnTUTU existent, par exemple, Voltage Control qui réalise la même chose. \\
 
-	Pour vérifier la consommation de batterie nous utilisons Battery Monitor\footnote{Battery Monitor : \url{https://play.google.com/store/apps/details?id=ccc71.bmw}}, cette application trace une courbe de la consommation batterie en direct, mais nous oblige à garder l'application ouverte en tache de fond ce qui utilisera aussi un peu de batterie et donc nos résultat seront légérement faussé mais la consommation engendrée par cette application devrait être négligeable dans nos résultats. \\
+	Pour vérifier la consommation de batterie nous utilisons Battery Monitor, cette application trace une courbe de la consommation batterie en direct, mais nous oblige à garder l'application ouverte en tache de fond ce qui utilisera aussi un peu de batterie et donc nos résultat seront légérement faussé mais la consommation engendrée par cette application devrait être négligeable dans nos résultats. \\
 
-	Nous utiliserons aussi Battery Log\footnote{Battery Log : \url{https://play.google.com/store/apps/details?id=kr.hwangti.batterylog&hl=fr}} qui écrit dans un fichier les informations de la batterie à un instant T et l'intervalle entre deux temps est modulable.\\
+	Nous utiliserons aussi Battery Log qui écrit dans un fichier les informations de la batterie à un instant T et l'intervalle entre deux temps est modulable.\\
 
-	En ce qui concerne nos tests sur ordinateur nous travaillons sous linux avec l'outil CPUFreq-selector\footnote{CPUFreq-selector : \url{http://manpages.ubuntu.com/manpages/hardy/man1/cpufreq-selector.1.html}} qui nous permet, comme AnTUTU sous Android, de moduler la fréquence des processeurs.\\
+	En ce qui concerne nos tests sur ordinateur nous travaillons sous linux avec l'outil CPUFreq-selector qui nous permet, comme AnTUTU sous Android, de moduler la fréquence des processeurs.\\
 
 	Ces outils nous permettrons d'évaluer les différents résultats obtenus durant nos tests.
